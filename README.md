@@ -66,23 +66,80 @@ git clone git@github.com:mcp-use/mcp-use-elastic-hack-a-night.git
 5. Upload the csv `public_server_rows.csv` in the repo
 6. In the import settings, select advanced, copy and replace the mapping for the fields `created_at`, `updated_at` and `approved_at` to ensure the date fields are the correct types to be searchable.
 ```json
- "properties": {
-      "created_at": {
-        "type": "date",
-        "format": "yyyy-MM-dd HH:mm:ss.SSSX||yyyy-MM-dd HH:mm:ss.SSSSX||yyyy-MM-dd HH:mm:ss.SSSSSX||yyyy-MM-dd HH:mm:ss.SSSSSSX",
-        "ignore_malformed": true
+{
+  "properties": {
+    "approved_at": {
+      "type": "date",
+      "format": "yyyy-MM-dd HH:mm:ss.SSSX||yyyy-MM-dd HH:mm:ss.SSSSX||yyyy-MM-dd HH:mm:ss.SSSSSX||yyyy-MM-dd HH:mm:ss.SSSSSSX",
+      "ignore_malformed": true
       },
-      "updated_at": {
-        "type": "date",
-        "format": "yyyy-MM-dd HH:mm:ss.SSSX||yyyy-MM-dd HH:mm:ss.SSSSX||yyyy-MM-dd HH:mm:ss.SSSSSX||yyyy-MM-dd HH:mm:ss.SSSSSSX",
-        "ignore_malformed": true
+    "categories": {
+      "type": "keyword"
+    },
+    "config": {
+      "type": "text"
+    },
+    "created_at": {
+      "type": "date",
+      "format": "yyyy-MM-dd HH:mm:ss.SSSX||yyyy-MM-dd HH:mm:ss.SSSSX||yyyy-MM-dd HH:mm:ss.SSSSSX||yyyy-MM-dd HH:mm:ss.SSSSSSX",
+      "ignore_malformed": true
       },
-      "approved_at": {
-        "type": "date",
-        "format": "yyyy-MM-dd HH:mm:ss.SSSX||yyyy-MM-dd HH:mm:ss.SSSSX||yyyy-MM-dd HH:mm:ss.SSSSSX||yyyy-MM-dd HH:mm:ss.SSSSSSX",
-        "ignore_malformed": true
-      }
+    "description": {
+      "type": "text"
+    },
+    "environment_variables_schema": {
+      "type": "text"
+    },
+    "github_icon_url": {
+      "type": "keyword"
+    },
+    "github_readme_url": {
+      "type": "keyword"
+    },
+    "github_repo_url": {
+      "type": "keyword"
+    },
+    "github_stars": {
+      "type": "long"
+    },
+    "github_user_id": {
+      "type": "long"
+    },
+    "id": {
+      "type": "keyword"
+    },
+    "is_featured": {
+      "type": "boolean"
+    },
+    "name": {
+      "type": "keyword"
+    },
+    "namespace": {
+      "type": "keyword"
+    },
+    "search_vector": {
+      "type": "text"
+    },
+    "slug": {
+      "type": "keyword"
+    },
+    "status": {
+      "type": "keyword"
+    },
+    "tools": {
+      "type": "keyword"
+    },
+    "updated_at": {
+      "type": "date",
+      "format": "yyyy-MM-dd HH:mm:ss.SSSX||yyyy-MM-dd HH:mm:ss.SSSSX||yyyy-MM-dd HH:mm:ss.SSSSSX||yyyy-MM-dd HH:mm:ss.SSSSSSX",
+      "ignore_malformed": true
+      },
+    "usable": {
+      "type": "boolean"
     }
+  }
+}
+
 ```
 8. Create an API key and copy it in a `.env` file in the repo with name `ELASTIC_API_KEY`
 9. Copy the Elastic host name for your index and copy the url in the `.env` file under `ELASTIC_INDEX_URL`
